@@ -10,21 +10,21 @@ import (
 func main() {
 
 	defer func(start time.Time) {
-        fmt.Printf("temps shell ia fr %v\n", time.Since(start))
-    }(time.Now())
+		fmt.Printf("temps select fr %v\n", time.Since(start))
+	}(time.Now())
 
-	datas, err := utils.ReadCSV("fr.csv");
+	datas, err := utils.ReadCSV("fr.csv")
 
 	if err != nil {
-    	fmt.Println("Error:", err)
-    	return
+		fmt.Println("Error:", err)
+		return
 	}
 
-	header := datas[0];
+	header := datas[0]
 	//remove de j à j+1 not include
-	datas = slices.Delete(datas, 0 , 1);
+	datas = slices.Delete(datas, 0, 1)
 
-	orderDatas := utils.TriShellIAInt(datas, 9)
+	orderDatas := utils.TriSelectInt(datas, 9)
 
 	orderDatas = append([][]string{header}, orderDatas...)
 
