@@ -10,10 +10,10 @@ import (
 func main() {
 
 	defer func(start time.Time) {
-        fmt.Printf("temps %v\n", time.Since(start))
+        fmt.Printf("temps bubble %v\n", time.Since(start))
     }(time.Now())
 
-	datas, err := utils.ReadCSV("small.csv");
+	datas, err := utils.ReadCSV("fr.csv");
 
 	if err != nil {
     	fmt.Println("Error:", err)
@@ -24,9 +24,9 @@ func main() {
 	//remove de j à j+1 not include
 	datas = slices.Delete(datas, 0 , 1);
 
-	orderDatas := utils.TriBubbleInt(datas, 9)
+	orderDatas := utils.TriInsertInt(datas, 9)
 
 	orderDatas = append([][]string{header}, orderDatas...)
 
-	utils.WriteCSV("output.csv", orderDatas)
+	utils.WriteCSV("frO.csv", orderDatas)
 }
