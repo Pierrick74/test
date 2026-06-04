@@ -1,21 +1,26 @@
 package main
 
 import (
+	utils "example/hello/util"
 	"fmt"
-	"example/hello/util"
+	"slices"
 )
 
 func main() {
-	var n int
-	fmt.Print("Combien de chiffres ? ")
-	fmt.Scanln(&n)
+	datas, err := utils.ReadCSV("small.csv");
 
-	tab := make([]int, n)
-	for i := 0; i < n; i++ {
-		fmt.Printf("Chiffre %d : ", i+1)
-		fmt.Scanln(&tab[i])
+	if err != nil {
+    	fmt.Println("Error:", err)
+    	return
 	}
 
-	utils.TriBubble(tab)
-	fmt.Println("Tableau trié :", tab)
+	header := datas[0];
+	//remove de j à j+1 not include
+	datas = slices.Delete(datas, 0 , 1);
+
+	orderDatas := utils.TriBubbleInt(datas, 9)
+
+	orderDatas = append([][]string{header}, orderDatas...)
+
+	utils.WriteCSV("output.csv", orderDatas)
 }

@@ -1,9 +1,11 @@
 package utils
 
-func TriBubble(tab []int) {
+import "strconv"
+
+func TriBubbleInt(tab [][]string, col int) [][]string {
 
   var isEnd bool = false;
-  
+
   for {
 	if (isEnd != false) {
 		break;
@@ -11,7 +13,9 @@ func TriBubble(tab []int) {
 
     isEnd = true;
     for  i:=0; i<len(tab)-1; i++ {
-        if(tab[i] > tab[i+1]) {
+        a, _ := strconv.ParseFloat(tab[i][col], 64);
+        b, _ := strconv.ParseFloat(tab[i+1][col], 64);
+        if (a > b) {
             temp := tab[i];
             tab[i] = tab[i + 1];
             tab[i + 1] = temp;
@@ -19,4 +23,6 @@ func TriBubble(tab []int) {
        }
      }
   }
+
+  return tab;
 }
