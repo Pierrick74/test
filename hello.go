@@ -1,10 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"example/hello/util"
+)
 
 func main() {
-    var name string
-    fmt.Print("Entrez votre nom : ")
-    fmt.Scanln(&name)
-    fmt.Printf("Bonjour, %s ! Bienvenue dans Go.\n", name)
+	var n int
+	fmt.Print("Combien de chiffres ? ")
+	fmt.Scanln(&n)
+
+	tab := make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Printf("Chiffre %d : ", i+1)
+		fmt.Scanln(&tab[i])
+	}
+
+	utils.TriBubble(tab)
+	fmt.Println("Tableau trié :", tab)
 }
