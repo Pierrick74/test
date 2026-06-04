@@ -9,9 +9,9 @@ func TriInsertIAInt(tab [][]string, col int) [][]string {
 	}
 
 	//converti en nombre une seule fois
-	keys := make([]float64, len(tab));
+	keys := make([]int64, len(tab));
 	for i := range tab {
-		keys[i], _ = strconv.ParseFloat(tab[i][col], 64);
+		keys[i], _ = strconv.ParseInt(tab[i][col], 10, 64);
 	}
 
     for  i:=1; i<len(tab); i++ {
