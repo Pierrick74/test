@@ -9,7 +9,7 @@ func TriShellInt(tab [][]string, col int) [][]string {
   
   	n := 0;
   	//trouve la plus grande largeur 
-	for longueur<n {
+	for n<longueur {
 		n = (3*n+1);
 	}
 
