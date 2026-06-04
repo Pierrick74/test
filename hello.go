@@ -4,9 +4,15 @@ import (
 	utils "example/hello/util"
 	"fmt"
 	"slices"
+	"time"
 )
 
 func main() {
+
+	defer func(start time.Time) {
+        fmt.Printf("temps %v\n", time.Since(start))
+    }(time.Now())
+
 	datas, err := utils.ReadCSV("small.csv");
 
 	if err != nil {
